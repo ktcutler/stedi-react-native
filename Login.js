@@ -22,6 +22,7 @@ const UselessTextInput = () => {
         keyboardType="numeric"
       />
       <Button
+        style={styles.Button}
         value="Login">
         </Button>
     </SafeAreaView>
