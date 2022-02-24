@@ -1,9 +1,11 @@
 import React from "react";
 import { SafeAreaView, StyleSheet, TextInput } from "react-native";
+import { Button } from "react-native-elements/dist/buttons/Button";
 
 const UselessTextInput = () => {
   const [text, onChangeText] = React.useState("Username");
   const [number, onChangeNumber] = React.useState(null);
+  
 
   return (
     <SafeAreaView>
@@ -19,6 +21,9 @@ const UselessTextInput = () => {
         placeholder="Password"
         keyboardType="numeric"
       />
+      <Button
+        value="Login">
+        </Button>
     </SafeAreaView>
   );
 };
