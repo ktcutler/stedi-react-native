@@ -2,6 +2,17 @@ import React from "react";
 import { SafeAreaView, StyleSheet, TextInput } from "react-native";
 import { Button } from "react-native-elements/dist/buttons/Button";
 
+export default function Login(){
+  return(
+    <View>
+      <Text>This is the Login Screen</Text>
+      <Button title="Log In" onPress={setUserLoggedIn(true)}></Button>
+    </View>
+  
+  );
+  
+  }  
+
 const UselessTextInput = () => {
   const [text, onChangeText] = React.useState("Username");
   const [number, onChangeNumber] = React.useState(null);
@@ -21,10 +32,6 @@ const UselessTextInput = () => {
         placeholder="Password"
         keyboardType="numeric"
       />
-      <Button
-        style={styles.Button}
-        value="Login">
-        </Button>
     </SafeAreaView>
   );
 };
@@ -37,5 +44,3 @@ const styles = StyleSheet.create({
     padding: 10,
   },
 });
-
-export default UselessTextInput;

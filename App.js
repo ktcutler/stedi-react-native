@@ -19,7 +19,7 @@ export default function App() {
   const [userLoggedIn, setUsderLoggedIN] = useState(false)
 
   if(userLoggedIn){
-  
+    console.log("User Logged In: "+userLoggedIn)
   return (
     <NavigationContainer>
       <Tab.Navigator
@@ -64,7 +64,10 @@ export default function App() {
 
 }
 else {
-return (<Login/>)
+  return <View>
+  <Text>This is the Login Screen</Text>
+  <Button title="Log In" onPress={setUserLoggedIn(true)}></Button>
+        </View>
 }
 }
 const styles = StyleSheet.create({
