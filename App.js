@@ -9,14 +9,14 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { enableExpoCliLogging } from 'expo/build/logs/Logs';
-import Login from './Login.js'; 
+import Login from './Login'; 
 
 // import Icons from "./Icons";
 const Tab = createMaterialBottomTabNavigator();
 
 export default function App() {
 
-  const [userLoggedIn, setUsderLoggedIN] = useState(false)
+  const [userLoggedIn, setUserLoggedIn] = useState(false);
 
   if(userLoggedIn){
     console.log("User Logged In: "+userLoggedIn)
@@ -64,10 +64,7 @@ export default function App() {
 
 }
 else {
-  return <View>
-  <Text>This is the Login Screen</Text>
-  <Button title="Log In" onPress={setUserLoggedIn(true)}></Button>
-        </View>
+  return (<Login setUserLoggedIn={setUserLoggedIn} />);
 }
 }
 const styles = StyleSheet.create({
