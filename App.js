@@ -9,7 +9,7 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { enableExpoCliLogging } from 'expo/build/logs/Logs';
-import Login from './Login'; 
+import Login from './Login.js'; 
 
 // import Icons from "./Icons";
 const Tab = createMaterialBottomTabNavigator();
