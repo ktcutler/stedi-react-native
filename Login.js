@@ -1,101 +1,44 @@
-
 import React from 'react';
-import {styles, SafeAreaView, TextInput, Button} from 'react-native';
+import {StyleSheet, View, Text, Button} from 'react-native';
+import { TextInput } from 'react-native-paper';
+export default function Login(props){
+    return(
+        <View>
+            <Text> </Text>
+            <Text> </Text>
+            <Text> </Text>
+            <Text> </Text>
+            <TextInput placeholder='Phone Number'></TextInput>
+            <Text> </Text>
+            <TextInput placeholder='Password'></TextInput>
+            <Text> </Text>
+            <Text> </Text>
+            <Button title="Get OTP" onPress={()=>props.setUserLoggedIn(true)}></Button>
+            <Button title="Log In" onPress={()=>props.setUserLoggedIn(true)}></Button>
 
-export default Login = (props) => {
-const [phoneNumber, setPhoneNumber] = React.useState("something");
-const [code, setCode] = React.useState(null);
+        </View>
+    );
+}
 
-    return (
-        <SafeAreaView style={{width: "100%", height: "100%", justifyContent: "center"
-        , alignItems: "center", alignSelf:"center", alignContent: "center"}}>
-          <TextInput
-            placeholder="Enter Phone Number"
-            style={styles.input}
-            // onChangeText={onChangeText}
-            onChangeNumber={number => setPhoneNumber(number)}
-            value={phoneNumber}
-          />
-          <NumberInput
-            placeholder="Enter OTP"
-            style={styles.input}
-            // onChangeText={onChangeNumber}
-            onChangeCode={(otp) => setCode(otp)}
-            value={code}
-            keyboardType="numeric"
-          />
+fetch('https://dev.stedi.me/twofactorlogin/', {
+  method: 'POST',
+  headers: {
+    Accept: 'application/json',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    firstParam: 'yourValue',
+    secondParam: 'yourOtherValue'
+  })
+});
 
-    <Button
-        title="Log In"
-        onPress={() => Alert.alert('Simple Button pressed')}
-        />
-        </SafeAreaView>
-      );
-    };
-    const styles = StyleSheet.create({
-      input: {
-        width: "80%",
-        height: 42,
-        justifyContent:"center",
-        marginTop: "5%",
-        borderBottomWidth: 1
-      },
+const getTwoFactorFromApi = () => {
+  return fetch('https://dev.stedi.me/twofactorlogin/')
+    .then((response) => response.text())
+    .then((json) => {
+      return json.movies;
+    })
+    .catch((error) => {
+      console.error(error);
     });
-
-// function savetoken(token){
-//     // whatever passes as token should save into local storage
-//         if (window.localStorage){
-//          localStorage.setItem("token", token);
-//         }
-//     }
-
-//     function checkexpiredtoken(){
-//         // read token from local storage - check with ajax call
-//             if(window.localStorage){
-//             usertoken = localStorage.getItem("token", token);
-//             $.ajax({
-//                type: 'GET',
-//                 url: '/checkToken',
-//                 data: '{"usertoken":"' + usertoken + '"}',
-//                 success: function(data){savetoken(data)},
-//                 contentType: "application/text",
-//                 dataType: 'text' })
-//             }
-//         }
-        
-//         function userlogin(){
-//             setuserpassword();
-//             setusername();
-//             $.ajax({
-//                 type: 'POST',
-//                 url: '/login',
-//                 data: ' {"userName":"'+ phoneNumber +'", "password":"'+ password +'"}', // or JSON.stringify ({name: 'jonas'}),
-//                 success: function(data) {
-//                     savetoken(data);
-//                     localStorage.removeItem("customer");
-//                     window.location.href = "/timer.html";
-//                  },
-//                 contentType: "application/text",
-//                 dataType: 'text'
-//             });
-        
-//         }
-        
-//         function setusername(){
-//             userName = $("#un").val();
-//         }
-        
-//         function setuserpassword(){
-//             password = $("#pw").val();
-//         }
-        
-//         var enterFunction = (event) =>{
-//             if (event.keyCode === 13){
-//                 event.preventDefault();
-//                 $("#loginbtn").click();
-//             }
-//         }
-        
-//         var passwordField = document.getElementById("pw");
-        
-//         passwordField.addEventListener("keyup", enterFunction);
+};
