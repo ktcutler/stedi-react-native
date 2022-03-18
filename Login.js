@@ -1,44 +1,59 @@
-import React from 'react';
+import React ,{useState}from 'react';
 import {StyleSheet, View, Text, Button} from 'react-native';
 import { TextInput } from 'react-native-paper';
 export default function Login(props){
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [oneTimePassword, setOneTimePassword] = useState("")
     return(
         <View>
             <Text> </Text>
             <Text> </Text>
             <Text> </Text>
             <Text> </Text>
-            <TextInput placeholder='Phone Number'></TextInput>
             <Text> </Text>
-            <TextInput placeholder='Password'></TextInput>
+            <TextInput
+            style={styles.login}
+            placeholder='Phone Number'
+            onChangeText={setPhoneNumber}
+            value = {phoneNumber}
+            keyboardType="numeric"/>
+            <Text> </Text>
+            <TextInput
+            style={styles.login}
+            placeholder='One Time Password'
+            onChangeText={setOneTimePassword}
+            value={oneTimePassword}
+            keyboardType="numeric"
+            />
             <Text> </Text>
             <Text> </Text>
-            <Button title="Get OTP" onPress={()=>props.setUserLoggedIn(true)}></Button>
-            <Button title="Log In" onPress={()=>props.setUserLoggedIn(true)}></Button>
-
+            <Button title="Get OTP" onPress={()=>sendOTP(phoneNumber)}></Button>
+            <Text> </Text>
+            <Text> </Text>
+            <Button title="Verify OTP" onPress={()=>
+              props.setUserLoggedIn()}></Button>
         </View>
     );
 }
-
-fetch('https://dev.stedi.me/twofactorlogin/', {
+const sendOTP = (phoneNumber) => {
+  fetch('https://dev.stedi.me/twofactorlogin/'+ phoneNumber, {
   method: 'POST',
   headers: {
-    Accept: 'application/json',
-    'Content-Type': 'application/json'
+    Accept: 'application/text',
+    'Content-Type': 'application/text'
   },
-  body: JSON.stringify({
-    firstParam: 'yourValue',
-    secondParam: 'yourOtherValue'
-  })
 });
-
-const getTwoFactorFromApi = () => {
-  return fetch('https://dev.stedi.me/twofactorlogin/')
-    .then((response) => response.text())
-    .then((json) => {
-      return json.movies;
-    })
-    .catch((error) => {
-      console.error(error);
-    });
-};
+}
+const styles = StyleSheet.create({
+  login: {
+      flexDirection: 'row',
+      width: '100%',
+      justifyContent: 'space-between',
+      backgroundColor: 'green',
+      height: '12%',
+      alignItems: 'flex-end',
+      paddingBottom: 5,
+      paddingLeft: 10,
+      paddingRight: 10,
+    },
+})
