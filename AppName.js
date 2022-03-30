@@ -1,16 +1,13 @@
 import React from "react";
 import { StyleSheet, Text, View, Image } from 'react-native';
-
-function AppName() {
+function AppName(props) {
     return (
       <View style={styles.appName}>
-        <Text style={styles.text}>STEDI Balance</Text>
+        <Text style={styles.text}>Welcome {props.userEmail} to STEDI Balance</Text>
       </View>
     );
   }
-
 export default AppName
-
 const styles = StyleSheet.create({
   appName: {
     paddingLeft:20,
@@ -18,6 +15,6 @@ const styles = StyleSheet.create({
   text: {
     color: 'white',
     fontWeight: '600',
-    fontSize: 30
+    fontSize: 20
   }
 })

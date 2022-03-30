@@ -8,6 +8,7 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Login from './Login.js';
+
 // import Icons from "./Icons";
 const Tab = createMaterialBottomTabNavigator();
 export default function App() {
@@ -55,15 +56,11 @@ export default function App() {
       </Tab.Navigator>
     </NavigationContainer>
   );
-
-
-
 }
-
 else {
-return (<Login setUserLoggedIn={setUserLoggedIn} setUserEmail={setUserEmail} />);
+return (<Login setUserLoggedIn={setUserLoggedIn} setUserEmail={setUserEmail} />
+)
 }
 }
 const styles = StyleSheet.create({
-
 });
